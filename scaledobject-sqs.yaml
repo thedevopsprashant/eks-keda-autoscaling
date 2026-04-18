@@ -6,7 +6,7 @@ metadata:
 spec:
   podIdentity:
     provider: aws
-    roleArn: arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/consumer-sqs-keda
+    roleArn: arn:aws:iam::877009927033:role/keda-nginx-sqs-reader
 ---
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
@@ -23,7 +23,7 @@ spec:
     authenticationRef:
       name: keda-trigger-auth-aws-credentials
     metadata:
-      queueURL: https://sqs.{{AWS_REGION}}.amazonaws.com/{{AWS_ACCOUNT_ID}}/{{QUEUE_NAME}}
+      queueURL: https://sqs.ap-south-1.amazonaws.com/877009927033/prashant
       queueLength: "5"
-      awsRegion: "{{AWS_REGION}}"
+      awsRegion: "ap-south-1"
       scaleOnInFlight: "false"
